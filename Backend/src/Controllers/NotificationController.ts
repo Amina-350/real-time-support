@@ -138,7 +138,7 @@ export const deleteNotification = async (
     }
 
     return res.status(200).json({
-      message: "Notification deleted successfully",
+      message: "Notification deleted has successfully",
     });
   } catch (error: any) {
     return res.status(500).json({

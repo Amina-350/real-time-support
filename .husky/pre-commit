@@ -1,4 +1,17 @@
 #!/usr/bin/env sh
-cd Backend
 
-npm run build
+echo "🔍 Running Backend build..."
+
+cd Backend
+npm run build || exit 1
+
+cd ..
+
+echo "🔍 Running Frontend build..."
+
+cd client
+npm run build || exit 1
+
+cd ..
+
+echo "✅ All checks passed!"
