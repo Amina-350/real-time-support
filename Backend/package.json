@@ -1,11 +1,10 @@
 {
   "type": "module",
-  "scripts": {
-  "start": "node dist/src/App.js",
-    "build": "tsc",
-    "dev": "nodemon --exec tsx src/App.ts"
-  
-  },
+"scripts": {
+  "start": "node dist/App.js",
+  "build": "tsc",
+  "dev": "nodemon --exec tsx src/App.ts"
+},
   "dependencies": {
     "bcrypt": "^6.0.0",
     "bson": "6.7.0",
