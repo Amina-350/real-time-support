@@ -2,7 +2,6 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import AgentDashboard from "./components/CustomerSupportDashboard/AgentDashboard/AgentDashboard";
 import AdminDashboard from "./components/AdminWorkDashboard/AdminDashboard/AdminDashboard";
-import Header from "./components/ClientDashboard/Header/Header";
 import Clientmain from "./components/ClientDashboard/Dashboard/Clientmain";
 import CreateNewTicket from "./components/ClientDashboard/Sidebar/CreateNewTicket";
 import Register from "./components/Authentication/Register";
