@@ -1,7 +1,7 @@
 {
   "type": "module",
   "scripts": {
-    "start": "node dist/App.js",
+  "start": "node dist/src/App.js",
     "build": "tsc",
     "dev": "nodemon --exec tsx src/App.ts"
   
