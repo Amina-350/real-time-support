@@ -1,0 +1,11 @@
+.agent-dashboard {
+  height: 100vh;
+  background: #f5f7fb;
+}
+
+.agent-layout {
+  display: grid;
+  grid-template-columns:3fr 1fr ;
+  height: calc(100vh - 70px);
+  gap:40px;
+}

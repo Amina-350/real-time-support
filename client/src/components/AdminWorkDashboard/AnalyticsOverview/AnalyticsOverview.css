@@ -1,0 +1,13 @@
+.analytics {
+  margin-bottom: 30px;
+}
+
+.analytics h2 {
+  margin-bottom: 15px;
+  font-size: 14px;
+}
+
+.metrics-grid {
+  display: flex;
+  gap: 20px;
+}

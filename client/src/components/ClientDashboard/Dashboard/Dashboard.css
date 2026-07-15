@@ -1,0 +1,8 @@
+.dashboard {
+  min-height: 100vh;
+  background: #f4f6f9;
+}
+
+.dashboard-content {
+  display: flex;
+}

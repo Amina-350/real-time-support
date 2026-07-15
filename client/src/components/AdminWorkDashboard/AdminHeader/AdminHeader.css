@@ -1,0 +1,21 @@
+.admin-header {
+  height: 70px;
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 25px;
+  border-bottom: 1px solid #ddd;
+}
+
+.logo {
+  font-weight: 700;
+  color: #2563eb;
+}
+
+.nav-links {
+  display: flex;
+  gap: 25px;
+  font-weight: 500;
+  cursor: pointer;
+}
