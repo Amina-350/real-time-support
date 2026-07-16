@@ -8,7 +8,7 @@ import { router as TicketRouter } from "./Routes/TicketRoute.js";
 import { router as MessageRouter } from "./Routes/MessageRoute.js";
 import { connectDB } from "./Config/db.js";
 import { initializeSocket } from "./Socket/Scoket.js";
-import{ router as notificationRouter} from './Routes/NotificationRoute.js';
+import { router as notificationRouter } from "./Routes/NotificationRoute.js";
 dotenv.config();
 
 const app = express();
@@ -16,13 +16,23 @@ const app = express();
 // Middleware
 app.use(express.json());
 
+const allowedOrigins = [
+  "http://localhost:3000",
+  "https://real-time-support-dnoy.vercel.app/",
+];
+
 app.use(
   cors({
-    origin: "http://localhost:3000",
+    origin: function (origin, callback) {
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
     credentials: true,
-  })
+  }),
 );
-
 app.use(express.urlencoded({ extended: true }));
 
 // Static Folder
@@ -35,22 +45,18 @@ app.use("/api/message", MessageRouter);
 app.use("/api/notification", notificationRouter);
 // Create HTTP Server
 const server = http.createServer(app);
-
 // Create Socket Server
 export const io = new Server(server, {
   cors: {
-    origin: "http://localhost:3000",
+    origin: allowedOrigins,
     credentials: true,
   },
 });
-
 initializeSocket(io);
 // Database
 connectDB();
-
 // Start Server
 const port = process.env.PORT || 4000;
-
 server.listen(port, () => {
   console.log(`Server running on port ${port}`);
 });
