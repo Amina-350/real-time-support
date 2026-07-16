@@ -39,10 +39,10 @@ app.use(express.urlencoded({ extended: true }));
 app.use("/uploads", express.static("public/uploads"));
 
 // Routes
-app.use("/user", userRouter);
-app.use("/ticket", TicketRouter);
-app.use("/message", MessageRouter);
-app.use("/notification", notificationRouter);
+app.use("/api/user", userRouter);
+app.use("/api/ticket", TicketRouter);
+app.use("/api/message", MessageRouter);
+app.use("/api/notification", notificationRouter);
 // Create HTTP Server
 const server = http.createServer(app);
 // Create Socket Server
