@@ -18,7 +18,7 @@ app.use(express.json());
 
 const allowedOrigins = [
   "http://localhost:3000",
-  "https://real-time-support-dnoy.vercel.app/",
+  "https://real-time-support.vercel.app/",
 ];
 
 app.use(
