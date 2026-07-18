@@ -6,57 +6,80 @@ import { Server } from "socket.io";
 import { router as userRouter } from "./Routes/UserRoute.js";
 import { router as TicketRouter } from "./Routes/TicketRoute.js";
 import { router as MessageRouter } from "./Routes/MessageRoute.js";
+import { router as notificationRouter } from "./Routes/NotificationRoute.js";
 import { connectDB } from "./Config/db.js";
 import { initializeSocket } from "./Socket/Scoket.js";
-import { router as notificationRouter } from "./Routes/NotificationRoute.js";
+
 dotenv.config();
-
 const app = express();
-
+// ===============================
 // Middleware
+// ===============================
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
-const allowedOrigins = [
-  "http://localhost:3000",
-  "https://real-time-support.vercel.app/",
-];
+// ===============================
+// CORS Configuration
+// ===============================
+
+// ALLOWED_ORIGINS=http://localhost:3000,https://real-time-support.vercel.app
+const allowedOrigins=process.env.ALLOWED_ORIGINS?.split(",").map((origin) => origin.trim()) || [];
+
+
 
 app.use(
   cors({
-    origin: function (origin, callback) {
-      if (!origin || allowedOrigins.includes(origin)) {
-        callback(null, true);
-      } else {
-        callback(new Error("Not allowed by CORS"));
+    origin: (origin, callback) => {
+      // Allow requests with no origin (Postman, mobile apps, etc.)
+      if (!origin) {
+        return callback(null, true);
       }
+      if (allowedOrigins.includes(origin)) {
+        return callback(null, true);
+      }
+      return callback(new Error("Not allowed by CORS"));
     },
     credentials: true,
-  }),
+  })
 );
-app.use(express.urlencoded({ extended: true }));
-
-// Static Folder
+// ===============================
+// Static Files
+// ===============================
 app.use("/uploads", express.static("public/uploads"));
-
-// Routes
+// ===============================
+// API Routes
+// ===============================
 app.use("/api/user", userRouter);
 app.use("/api/ticket", TicketRouter);
 app.use("/api/message", MessageRouter);
 app.use("/api/notification", notificationRouter);
+
+// ===============================
 // Create HTTP Server
+// ===============================
 const server = http.createServer(app);
-// Create Socket Server
+
+// ===============================
+// Socket.IO
+// ===============================
 export const io = new Server(server, {
   cors: {
     origin: allowedOrigins,
     credentials: true,
   },
 });
+
 initializeSocket(io);
-// Database
+
+// ===============================
+// Connect Database
+// ===============================
 connectDB();
+
+// ===============================
 // Start Server
-const port = process.env.PORT || 4000;
-server.listen(port, () => {
-  console.log(`Server running on port ${port}`);
+// ===============================
+const PORT = process.env.PORT || 4000;
+server.listen(PORT, () => {
+  console.log(`🚀 Server running on port ${PORT}`);
 });
