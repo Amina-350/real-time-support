@@ -12,10 +12,10 @@ function TicketList({ tickets ,userId}) {
     <main className="ticket-list">
       <h5>Active Tickets ({activeTickets.length})</h5>
 
-      {activeTickets.length>0?(
-      activeTickets.map(ticket => (
+      {activeTickets?.length>0?(
+      activeTickets?.map(ticket => (
         <TicketCard
-          key={ticket.id}
+          key={ticket?.id}
           {...ticket}
         
         />

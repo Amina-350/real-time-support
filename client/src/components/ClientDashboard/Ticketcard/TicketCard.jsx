@@ -16,11 +16,11 @@ function TicketCard({
       <h3>Subject:
       {subject}
       </h3>
-<p>Agent Name: {agentId.name}</p>
-<p>Agent Email: {agentId.email}</p>
+<p>Agent Name: {agentId?.name}</p>
+<p>Agent Email: {agentId?.email}</p>
       <div className="ticket-info">
              Priority: 
-        <span className={`priority ${priority.toLowerCase()}`}>
+        <span className={`priority ${priority?.toLowerCase()}`}>
     {priority}
         </span>
    Status:
