@@ -33,7 +33,7 @@ function AllTicketsList() {
       {mytic.length > 0 ? (
         mytic.map((item) => (
           <CustomerCard
-            key={item._id}
+            key={item?._id}
             {...item}
           />
         ))

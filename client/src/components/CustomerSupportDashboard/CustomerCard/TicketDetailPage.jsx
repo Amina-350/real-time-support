@@ -80,7 +80,7 @@ console.log("the ticket detail is -->",ticket)
         </button>
 
         <div className="agent-link agent-linkp">
-          <Link to={`/chat-window/${ticket._id}/${ticket.agentId}`}>
+          <Link to={`/chat-window/${ticket?._id}/${ticket.agentId}`}>
             Start Chat with Customer
           </Link>
           <Link to={`/user-detail-page/${ticket.agentId}`}>
@@ -99,7 +99,7 @@ console.log("the ticket detail is -->",ticket)
           <label style={{ color: "red" }}>Ticket Status: &nbsp;</label>
           <select
             value={ticket.status}
-            onChange={(e) => updateStatus(ticket._id, e.target.value)}
+            onChange={(e) => updateStatus(ticket?._id, e.target.value)}
           >
             <option value="open">open</option>
             <option value="in-progress">in-progress</option>
@@ -138,7 +138,7 @@ console.log("the ticket detail is -->",ticket)
                 borderRadius: "4px",
               }}
             >
-              {ticket._id}
+              {ticket?._id}
             </code>
           </p>
         </div>

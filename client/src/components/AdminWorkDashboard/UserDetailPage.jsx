@@ -60,7 +60,7 @@ function UserDetailPage() {
         </p>
 
         <p>
-          <strong>User ID:</strong> {user._id}
+          <strong>User ID:</strong> {user?._id}
         </p>
 
         <Link to="/all-users">← Back to Users</Link>

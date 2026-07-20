@@ -40,7 +40,7 @@ function Header() {
       prev.map((notification) => {
         const currentTicketId =
           typeof notification.ticketId === "object"
-            ? notification.ticketId._id
+            ? notification.ticketId?._id
             : notification.ticketId;
 
         if (currentTicketId === ticketId) {
@@ -112,7 +112,7 @@ function Header() {
               ) : (
                 notifications.map((item) => (
                   <div
-                    key={item._id}
+                    key={item?._id}
                     className={`notification-item ${
                       !item.isRead ? "unread" : ""
                     }`}

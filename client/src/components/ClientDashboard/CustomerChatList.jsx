@@ -45,14 +45,14 @@ function CustomerChatList() {
         chats.map((chat) => {
           // Show the other user instead of yourself
           const otherUser =
-            chat.senderId._id === currentUserId
+            chat.senderId?._id === currentUserId
               ? chat.receiverId
               : chat.senderId;
 
           return (
             <Link
-              key={chat.ticketId._id}
-              to={`/chat-window/${chat.ticketId._id}/${otherUser._id}`}
+              key={chat.ticketId?._id}
+              to={`/chat-window/${chat.ticketId?._id}/${otherUser?._id}`}
               className="chat-card"
               style={{
                 textDecoration: "none",

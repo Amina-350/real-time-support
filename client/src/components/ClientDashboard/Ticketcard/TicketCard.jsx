@@ -32,7 +32,7 @@ function TicketCard({
       <div className="ticket-footer">
 
 
-<Link to={`/chat-window/${_id}/${agentId._id}`}>
+<Link to={`/chat-window/${_id}/${agentId?._id}`}>
   <button>Open Chat Window</button>
 </Link>
       </div>

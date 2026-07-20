@@ -46,7 +46,7 @@ function TicketsTable() {
       // Update the ticket status in the UI
       setTicketData((prev) =>
         prev.map((ticket) =>
-          ticket._id === ticketId
+          ticket?._id === ticketId
             ? { ...ticket, status }
             : ticket
         )
@@ -74,8 +74,8 @@ function TicketsTable() {
         <tbody>
           {ticketdata.length > 0 ? (
             ticketdata.map((ticket) => (
-              <tr key={ticket._id}>
-                <td>{ticket._id}</td>
+              <tr key={ticket?._id}>
+                <td>{ticket?._id}</td>
                 <td>{ticket.subject}</td>
                 <td>{ticket.priority}</td>
                 <td>{ticket.agentId?.name || "Not Assigned"}</td>
@@ -84,7 +84,7 @@ function TicketsTable() {
                   <select
                     value={ticket.status}
                     onChange={(e) =>
-                      updateStatus(ticket._id, e.target.value)
+                      updateStatus(ticket?._id, e.target.value)
                     }
                   >
                              <option value="open">open</option>

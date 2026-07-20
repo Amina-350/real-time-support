@@ -45,7 +45,7 @@ function Allusers() {
       // Update UI
       setUsers((prev) =>
         prev.map((user) =>
-          user._id === id
+          user?._id === id
             ? { ...user, isBlocked: true }
             : user
         )
@@ -73,7 +73,7 @@ function Allusers() {
       // Update UI
       setUsers((prev) =>
         prev.map((user) =>
-          user._id === id
+          user?._id === id
             ? { ...user, isBlocked: false }
             : user
         )
@@ -100,7 +100,7 @@ function Allusers() {
         <tbody>
           {users.length > 0 ? (
             users.map((user, index) => (
-              <tr key={user._id}>
+              <tr key={user?._id}>
                 <td>{index + 1}</td>
                 <td>{user.name}</td>
                 <td>{user.email}</td>
@@ -109,14 +109,14 @@ function Allusers() {
                 <td>
                   {user.isBlocked ? (
                     <button
-                      onClick={() => unblockUser(user._id)}
+                      onClick={() => unblockUser(user?._id)}
                       className="unblock-btn"
                     >
                       Unblock User
                     </button>
                   ) : (
                     <button
-                      onClick={() => blockUser(user._id)}
+                      onClick={() => blockUser(user?._id)}
                       className="block-btn"
                     >
                       Block User
@@ -125,7 +125,7 @@ function Allusers() {
                 </td>
 
                 <td>
-                  <Link to={`/user-detail-page/${user._id}`}>
+                  <Link to={`/user-detail-page/${user?._id}`}>
                     Check
                   </Link>
                 </td>

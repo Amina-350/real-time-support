@@ -84,7 +84,7 @@ useEffect(() => {
     const handleNewMessage = (newMessage) => {
       const ticketId =
         typeof newMessage.ticketId === "object"
-          ? newMessage.ticketId._id
+          ? newMessage.ticketId?._id
           : newMessage.ticketId;
 
       // Ignore messages from another ticket
@@ -93,7 +93,7 @@ useEffect(() => {
       setMessages((prev) => {
           console.log("Received socket message:", newMessage);
         // Prevent duplicate message
-        const exists = prev.some((msg) => msg._id === newMessage._id);
+        const exists = prev.some((msg) => msg?._id === newMessage?._id);
 
         if (exists) return prev;
 
@@ -150,9 +150,9 @@ useEffect(() => {
         ) : (
           messages.map((msg) => (
             <MessageBubble
-              key={msg._id}
+              key={msg?._id}
               message={msg}
-              isMine={msg.senderId._id === currentUserId}
+              isMine={msg.senderId?._id === currentUserId}
             />
           ))
         )}
